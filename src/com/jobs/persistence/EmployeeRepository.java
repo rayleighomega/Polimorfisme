@@ -7,21 +7,30 @@ import com.jobs.domain.AbsStaffMember;
 
 public class EmployeeRepository {
 
-	private static List<AbsStaffMember> members=new ArrayList<>();
+        //An static field can be shared between instances
+        //However we only need one instance to do the job
+	private static List<AbsStaffMember> members = new ArrayList<>();
 	
-	public EmployeeRepository(){
-		
+	public EmployeeRepository()
+        {
+            
 	}
 	
-	public List<AbsStaffMember> getAllMembers(){
-		return new ArrayList<>(members);
+	public List<AbsStaffMember> getAllMembers()
+        {
+            return EmployeeRepository.members;
 	}
 	
 	
-	public void addMember(AbsStaffMember member) throws Exception{
-		if(member==null) throw new Exception();
-		members.add(member);
+	public void addMember(AbsStaffMember member) throws Exception
+        {
+            if(member == null) throw new Exception();
+            members.add(member);
 	}
-	
+        
+	public AbsStaffMember getMember(int staffindex) throws Exception
+        {
+            return members.get(staffindex);
+	}	
 	
 }
